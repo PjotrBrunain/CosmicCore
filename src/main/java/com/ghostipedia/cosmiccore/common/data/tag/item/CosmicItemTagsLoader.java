@@ -1,5 +1,6 @@
 package com.ghostipedia.cosmiccore.common.data.tag.item;
 
+import com.ghostipedia.cosmiccore.common.data.CosmicItems;
 import com.gregtechceu.gtceu.common.data.GTItems;
 
 import net.minecraft.tags.TagEntry;
@@ -20,9 +21,13 @@ public class CosmicItemTagsLoader {
     public static ItemEntry<?>[] SPACE_SUITES = Stream.of(NANO_SPACE_SUITE, QUANTUM_SPACE_SUITE).flatMap(Stream::of)
             .toArray(ItemEntry<?>[]::new);
 
+    public static ItemEntry<?>[] WANDERERS_ARMOR = {CosmicItems.WANDERERS_HELMET, CosmicItems.WANDERERS_CHESTPLATE,
+            CosmicItems.WANDERERS_LEGGINGS, CosmicItems.WANDERERS_BOOTS};
+
     public static void init(RegistrateTagsProvider<Item> provider) {
         create(provider, CosmicItemTags.NANOMUSCLE_SPACE_SUITE, NANO_SPACE_SUITE);
         create(provider, CosmicItemTags.QUARKTECH_SPACE_SUITE, QUANTUM_SPACE_SUITE);
+        create(provider, CosmicItemTags.WANDERERS_ARMOR, WANDERERS_ARMOR);
 
         create(provider, ModItemTags.SPACE_SUITS, SPACE_SUITES);
         create(provider, ModItemTags.FREEZE_RESISTANT_ARMOR, SPACE_SUITES);
