@@ -7,7 +7,9 @@ import com.ghostipedia.cosmiccore.api.registries.CosmicRegistration;
 import com.ghostipedia.cosmiccore.client.renderer.item.HaloItemRenderer;
 import com.ghostipedia.cosmiccore.common.data.tag.item.CosmicItemTags;
 import com.ghostipedia.cosmiccore.common.item.CosmicScytheItem;
-import com.ghostipedia.cosmiccore.common.item.armor.*;
+import com.ghostipedia.cosmiccore.common.item.armor.ChestSanguineWarptechSuite;
+import com.ghostipedia.cosmiccore.common.item.armor.HelmetSanguineWarptechSuite;
+import com.ghostipedia.cosmiccore.common.item.armor.SanguineWarptechSuite;
 import com.ghostipedia.cosmiccore.common.item.behavior.EffectApplicationBehavior;
 import com.ghostipedia.cosmiccore.common.item.behavior.InfiniteSprayCanBehavior;
 import com.ghostipedia.cosmiccore.common.item.behavior.StructureWriteBehavior;
@@ -39,7 +41,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
@@ -106,8 +107,8 @@ public class CosmicItems {
             .register();
 
     public static MalumSpiritType ETHERIC_SPIRIT = SpiritTypeRegistry.register(MalumSpiritType.create("etheric",
-                    new SpiritVisualMotif(new Color(120, 75, 255), new Color(55, 55, 55), 0.9f, Easing.BOUNCE_IN_OUT),
-                    ETHERIC_SPIRIT_ITEM)
+            new SpiritVisualMotif(new Color(120, 75, 255), new Color(55, 55, 55), 0.9f, Easing.BOUNCE_IN_OUT),
+            ETHERIC_SPIRIT_ITEM)
             .setItemColor(SpiritVisualMotif::getPrimaryColor)
             .build());
 
@@ -120,8 +121,8 @@ public class CosmicItems {
             .register();
 
     public static MalumSpiritType WRATHFUL_SPIRIT = SpiritTypeRegistry.register(MalumSpiritType.create("wrathful",
-                    new SpiritVisualMotif(2, new Color(120, 200, 80), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
-                    WRATHFUL_SPIRIT_ITEM)
+            new SpiritVisualMotif(2, new Color(120, 200, 80), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
+            WRATHFUL_SPIRIT_ITEM)
             .setItemColor(SpiritVisualMotif::getPrimaryColor)
             .build());
 
@@ -134,8 +135,8 @@ public class CosmicItems {
             .register();
 
     public static MalumSpiritType PRIDEFUL_SPIRIT = SpiritTypeRegistry.register(MalumSpiritType.create("prideful",
-                    new SpiritVisualMotif(4, new Color(120, 0, 100), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
-                    PRIDEFUL_SPIRIT_ITEM)
+            new SpiritVisualMotif(4, new Color(120, 0, 100), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
+            PRIDEFUL_SPIRIT_ITEM)
             .setItemColor(SpiritVisualMotif::getPrimaryColor)
             .build());
 
@@ -148,8 +149,8 @@ public class CosmicItems {
             .register();
 
     public static MalumSpiritType MALICE_SPIRIT = SpiritTypeRegistry.register(MalumSpiritType.create("malice",
-                    new SpiritVisualMotif(4, new Color(210, 210, 210), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
-                    MALICE_SPIRIT_ITEM)
+            new SpiritVisualMotif(4, new Color(210, 210, 210), new Color(200, 55, 0), 0.9f, Easing.SINE_IN_OUT),
+            MALICE_SPIRIT_ITEM)
             .setItemColor(SpiritVisualMotif::getPrimaryColor)
             .build());
     //
@@ -229,6 +230,43 @@ public class CosmicItems {
             .item("resonant_mod", ComponentItem::create)
             .lang("Fusion Module Mk.1")
             .properties(p -> p.stacksTo(1))
+            .tag()
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<ComponentItem> PALE_SAW = REGISTRATE
+            .item("pale_saw", ComponentItem::create)
+            .lang("Pale Saw")
+            .properties(p -> p.stacksTo(64))
+            .tag()
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> PALE_SCRAP = REGISTRATE
+            .item("pale_scrap", ComponentItem::create)
+            .lang("Pale Scrap")
+            .properties(p -> p.stacksTo(64))
+            .tag()
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> ABRASIVE_ROSIN_MILLSTONES = REGISTRATE
+            .item("abrasive_rosin_millstones", ComponentItem::create)
+            .lang("Abrasive Rosin Millstones")
+            .properties(p -> p.stacksTo(64))
+            .tag()
+            .defaultModel()
+            .register();
+
+    public static final ItemEntry<ComponentItem> BITUMEN_WAX = REGISTRATE
+            .item("bitumen_wax", ComponentItem::create)
+            .lang("Bitumen Wax")
+            .properties(p -> p.stacksTo(64))
+            .tag()
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> ENERGIZED_SILK = REGISTRATE
+            .item("energized_silk", ComponentItem::create)
+            .lang("Energized Silk")
+            .properties(p -> p.stacksTo(64))
             .tag()
             .defaultModel()
             .register();
@@ -1116,9 +1154,9 @@ public class CosmicItems {
             .lang("The One Ring")
             .properties(p -> p.stacksTo(1).fireResistant())
             .onRegister(attach(new EffectApplicationBehavior()
-                            .addEffect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 10), 1.0F)
-                            .addEffect(() -> new MobEffectInstance(MobEffects.UNLUCK, 10, 5), 1.0F)
-                            .addEffect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1), 1.0F),
+                    .addEffect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 10), 1.0F)
+                    .addEffect(() -> new MobEffectInstance(MobEffects.UNLUCK, 10, 5), 1.0F)
+                    .addEffect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10, 1), 1.0F),
                     new TooltipBehavior(list -> {
                         list.add(Component.translatable("item.cosmiccore.the_one_ring.tooltip.0"));
                         list.add(Component.translatable("item.cosmiccore.the_one_ring.tooltip.1"));
@@ -1436,12 +1474,12 @@ public class CosmicItems {
     // pineapple up the ass of whatever mojang employee thought these were **OKAY TO CODE**
 
     public static ItemEntry<ArmorComponentItem> SANGUINE_WARPTECH_HELMET = REGISTRATE.item("sanguine_warptech_helmet",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.HELMET, p)
-                            .setArmorLogic(new HelmetSanguineWarptechSuite(ArmorItem.Type.HELMET,
-                                    8192,
-                                    100_000_000L * (long) Math.max(1,
-                                            Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
-                                    ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
+            (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.HELMET, p)
+                    .setArmorLogic(new HelmetSanguineWarptechSuite(ArmorItem.Type.HELMET,
+                            8192,
+                            100_000_000L * (long) Math.max(1,
+                                    Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
+                            ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
             .lang("Sanguine WarpTech Helmet")
             .properties(p -> p.rarity(Rarity.EPIC))
             .tag(CustomTags.PPE_ARMOR)
@@ -1473,12 +1511,12 @@ public class CosmicItems {
             .register();
 
     public static ItemEntry<ArmorComponentItem> SANGUINE_WARPTECH_BOOTS = REGISTRATE.item("sanguine_warptech_boots",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.BOOTS, p)
-                            .setArmorLogic(new SanguineWarptechSuite(ArmorItem.Type.BOOTS,
-                                    8192,
-                                    100_000_000L * (long) Math.max(1,
-                                            Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
-                                    ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
+            (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.BOOTS, p)
+                    .setArmorLogic(new SanguineWarptechSuite(ArmorItem.Type.BOOTS,
+                            8192,
+                            100_000_000L * (long) Math.max(1,
+                                    Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
+                            ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
             .lang("Sanguine WarpTech Boots")
             .properties(p -> p.rarity(Rarity.EPIC))
             .tag(CustomTags.PPE_ARMOR)
@@ -1832,33 +1870,76 @@ public class CosmicItems {
             .defaultModel()
             .register();
 
-    public static final ItemEntry<ComponentItem> WRENCH_CAST_GOLD = REGISTRATE
-            .item("wrench_head_cast", ComponentItem::create)
-            .lang("Wrench Head Cast")
-            .properties(p -> p.stacksTo(1))
-//            .tag(CosmicItemTags.WRENCH_HEAD_CAST_MULTI)
-            .defaultModel()
-            .register();
-    public static final ItemEntry<ComponentItem> WRENCH_CAST_SAND = REGISTRATE
-            .item("wrench_head_sand_cast", ComponentItem::create)
-            .lang("Wrench Head Sand Cast")
-//            .tag(CosmicItemTags.WRENCH_HEAD_CAST_SINGLE)
-            .properties(p -> p.stacksTo(1))
+    public static final ItemEntry<ComponentItem> BASIC_GENE_KIT = REGISTRATE
+            .item("basic_gene_kit", ComponentItem::create)
+            .lang("Basic Gene Kit")
+            .properties(p -> p.stacksTo(16))
             .defaultModel()
             .register();
 
-    public static final ItemEntry<ComponentItem> SCREWDRIVER_CAST_GOLD = REGISTRATE
-            .item("screwdriver_head_cast", ComponentItem::create)
-            .lang("Screwdriver Head Cast")
-            .properties(p -> p.stacksTo(1))
-//            .tag(CosmicItemTags.SCREWDRIVER_HEAD_CAST_MULTI)
+    public static final ItemEntry<ComponentItem> INTERMEDIATE_GENE_KIT = REGISTRATE
+            .item("intermediate_gene_kit", ComponentItem::create)
+            .lang("Intermediate Gene Kit")
+            .properties(p -> p.stacksTo(16))
             .defaultModel()
             .register();
-    public static final ItemEntry<ComponentItem> SCREWDRIVER_CAST_SAND = REGISTRATE
-            .item("screwdriver_head_sand_cast", ComponentItem::create)
-            .lang("Screwdriver Head Sand Cast")
-//            .tag(CosmicItemTags.SCREWDRIVER_HEAD_CAST_SINGLE)
-            .properties(p -> p.stacksTo(1))
+
+    public static final ItemEntry<ComponentItem> ADVANCED_GENE_KIT = REGISTRATE
+            .item("advanced_gene_kit", ComponentItem::create)
+            .lang("Advanced Gene Kit")
+            .properties(p -> p.stacksTo(16))
+            .defaultModel()
+            .register();
+
+    // MANA WAFERS AND CHIPS
+    public static final ItemEntry<ComponentItem> LATENT_CAPACITY_WAFER = REGISTRATE
+            .item("latent_capacity_wafer", ComponentItem::create)
+            .lang("Latent Capacity Wafer")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> LATENT_EFFICACY_WAFER = REGISTRATE
+            .item("latent_efficacy_wafer", ComponentItem::create)
+            .lang("Latent Efficacy Wafer")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> LATENT_POTENCY_WAFER = REGISTRATE
+            .item("latent_potency_wafer", ComponentItem::create)
+            .lang("Latent Potency Wafer")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> LATENT_VERBOSITY_WAFER = REGISTRATE
+            .item("latent_verbosity_wafer", ComponentItem::create)
+            .lang("Latent Verbosity Wafer")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+
+    // CHIPS
+    public static final ItemEntry<ComponentItem> CAPACITY_CHIP = REGISTRATE
+            .item("capacity_chip", ComponentItem::create)
+            .lang("Capacity Chip")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> EFFICACY_CHIP = REGISTRATE
+            .item("efficacy_chip", ComponentItem::create)
+            .lang("Efficacy Chip")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> POTENCY_CHIP = REGISTRATE
+            .item("potency_chip", ComponentItem::create)
+            .lang("Potency Chip")
+            .properties(p -> p.stacksTo(64))
+            .defaultModel()
+            .register();
+    public static final ItemEntry<ComponentItem> VERBOSITY_CHIP = REGISTRATE
+            .item("verbosity_chip", ComponentItem::create)
+            .lang("Verbosity Chip")
+            .properties(p -> p.stacksTo(64))
             .defaultModel()
             .register();
 
@@ -1871,42 +1952,6 @@ public class CosmicItems {
                     prov.modLoc("item/terminal/terminal_overlay")))
             .properties(p -> p.stacksTo(1))
             .onRegister(attach(new LinkedTerminalBehavior()))
-            .register();
-
-    public static ItemEntry<ArmorComponentItem> WANDERERS_HELMET = REGISTRATE
-            .item("wanderers_helmet",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.HELMET, p)
-                            .setArmorLogic(new WanderersArmor(0,0,1, ArmorItem.Type.HELMET)))
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .lang("Wanderers Helmet")
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .register();
-
-    public static ItemEntry<ArmorComponentItem> WANDERERS_CHESTPLATE = REGISTRATE
-            .item("wanderers_chestplate",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, p)
-                            .setArmorLogic(new WanderersArmor(0,0,1, ArmorItem.Type.CHESTPLATE)))
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .lang("Wanderers Chestplate")
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .register();
-
-    public static ItemEntry<ArmorComponentItem> WANDERERS_LEGGINGS = REGISTRATE
-            .item("wanderers_leggings",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.LEGGINGS, p)
-                            .setArmorLogic(new WanderersArmor(0,0,1, ArmorItem.Type.LEGGINGS)))
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .lang("Wanderers Leggings")
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .register();
-
-    public static ItemEntry<ArmorComponentItem> WANDERERS_BOOTS = REGISTRATE
-            .item("wanderers_boots",
-                    (p) -> new ArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.BOOTS, p)
-                            .setArmorLogic(new WanderersArmor(0,0,1, ArmorItem.Type.BOOTS)))
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
-            .lang("Wanderers Boots")
-            .tag(CosmicItemTags.WANDERERS_ARMOR)
             .register();
 
     public static ICustomDescriptionId cellName() {
