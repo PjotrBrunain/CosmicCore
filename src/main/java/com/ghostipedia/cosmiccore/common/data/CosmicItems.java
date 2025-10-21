@@ -7,9 +7,7 @@ import com.ghostipedia.cosmiccore.api.registries.CosmicRegistration;
 import com.ghostipedia.cosmiccore.client.renderer.item.HaloItemRenderer;
 import com.ghostipedia.cosmiccore.common.data.tag.item.CosmicItemTags;
 import com.ghostipedia.cosmiccore.common.item.CosmicScytheItem;
-import com.ghostipedia.cosmiccore.common.item.armor.ChestSanguineWarptechSuite;
-import com.ghostipedia.cosmiccore.common.item.armor.HelmetSanguineWarptechSuite;
-import com.ghostipedia.cosmiccore.common.item.armor.SanguineWarptechSuite;
+import com.ghostipedia.cosmiccore.common.item.armor.*;
 import com.ghostipedia.cosmiccore.common.item.behavior.EffectApplicationBehavior;
 import com.ghostipedia.cosmiccore.common.item.behavior.InfiniteSprayCanBehavior;
 import com.ghostipedia.cosmiccore.common.item.behavior.StructureWriteBehavior;
@@ -1953,6 +1951,39 @@ public class CosmicItems {
             .properties(p -> p.stacksTo(1))
             .onRegister(attach(new LinkedTerminalBehavior()))
             .register();
+
+    public static ItemEntry<WanderersArmor> WANDERERS_CHESTPLATE = REGISTRATE
+            .item("wanderers_chestplate",
+                    (p) -> new WanderersArmor(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, p))
+            .lang("Wanderers Chestplate")
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .tag(CosmicItemTags.WANDERERS_ARMOR)
+            .register();
+
+    public static ItemEntry<WanderersArmor> WANDERERS_HELMET = REGISTRATE
+            .item("wanderers_helmet",
+                    (p) -> new WanderersArmor(GTArmorMaterials.ARMOR, ArmorItem.Type.HELMET, p))
+            .lang("Wanderers Helmet")
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .tag(CosmicItemTags.WANDERERS_ARMOR)
+            .register();
+
+    public static ItemEntry<WanderersArmor> WANDERERS_LEGGINGS = REGISTRATE
+            .item("wanderers_leggings",
+                    (p) -> new WanderersArmor(GTArmorMaterials.ARMOR, ArmorItem.Type.LEGGINGS, p))
+            .lang("Wanderers Leggings")
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .tag(CosmicItemTags.WANDERERS_ARMOR)
+            .register();
+
+    public static ItemEntry<WanderersArmor> WANDERERS_BOOTS = REGISTRATE
+            .item("wanderers_boots",
+                    (p) -> new WanderersArmor(GTArmorMaterials.ARMOR, ArmorItem.Type.BOOTS, p))
+            .lang("Wanderers Boots")
+            .properties(p -> p.rarity(Rarity.EPIC))
+            .tag(CosmicItemTags.WANDERERS_ARMOR)
+            .register();
+
 
     public static ICustomDescriptionId cellName() {
         return new ICustomDescriptionId() {

@@ -9,4 +9,5 @@ public class CosmicItemTags {
 
     public static final TagKey<Item> NANOMUSCLE_SPACE_SUITE = TagUtil.createModItemTag("nano_space_suite");
     public static final TagKey<Item> QUARKTECH_SPACE_SUITE = TagUtil.createModItemTag("quantum_space_suite");
+    public static final TagKey<Item> WANDERERS_ARMOR = TagUtil.createModItemTag("wanderers_armor");
 }
