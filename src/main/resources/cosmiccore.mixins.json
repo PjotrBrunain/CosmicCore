@@ -9,6 +9,7 @@
     "client.MinecraftMixin",
     "client.SoundManagerMixin",
     "emi.RecipeScreenMixin",
+    "embers.EmberDialBlockMixin",
     "ldlib.CustomBakedModelMixin"
   ],
   "mixins": [
@@ -17,6 +18,7 @@
     "ApotheosisRecipeHelperMixin",
     "ApothSmithingCategoryMixin",
     "BlockPatternMixin",
+    "BlocksMixin",
     "ComponentItemMixin",
     "DivingHelmetItemMixin",
     "GendustryJEIPluginMixin",
